@@ -1,0 +1,7 @@
+.header-container {
+  display: flex;
+  align-items: center;
+  padding: 20px 20px; /* Adjust padding as needed */
+  background-color: rgb(118, 118, 118); /* Set your desired background color */
+  color: #fff; /* Set text color to white or your preferred color */
+}

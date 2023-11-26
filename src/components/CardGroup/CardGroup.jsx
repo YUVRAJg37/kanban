@@ -2,10 +2,10 @@ import CardGroupHeader from "../CardGroupHeader/CardGroupHeader";
 import TaskCard from "../TaskCard/TaskCard";
 import "./CardGroup.css";
 
-function CardGroup({ tickets, userId, userName }) {
+function CardGroup({ tickets, userId, title }) {
   return (
     <div className="myDiv">
-      <CardGroupHeader title={userName} />
+      <CardGroupHeader title={title} />
       {tickets.map((item, index) => (
         <TaskCard key={index} title={item.id} description={item.title} />
       ))}
