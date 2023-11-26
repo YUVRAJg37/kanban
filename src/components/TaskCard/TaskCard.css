@@ -1,0 +1,44 @@
+/* TaskCard.css */
+
+.card {
+  width: 200px;
+  max-width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 12px;
+  margin: 8px;
+  background-color: #fff;
+}
+
+.content {
+  margin-bottom: 10px;
+}
+
+h5 {
+  color: #333;
+  font-size: 16px;
+  font-weight: normal;
+  margin: 0;
+  overflow: hidden; /* Hide overflowing text */
+  white-space: nowrap; /* Prevent text from wrapping */
+  text-overflow: ellipsis; /* Show an ellipsis (...) for overflowing text */
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer div:first-child {
+  flex-grow: 1;
+}
+
+.tag {
+  background-color: #3498db;
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
