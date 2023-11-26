@@ -2,7 +2,7 @@ import "./TaskFetcher.css";
 import React, { useEffect, useState } from "react";
 import CardGroup from "../CardGroup/CardGroup";
 
-const TaskFetcher = ({ groupChoice }) => {
+const TaskFetcher = ({ groupChoice, sortChoice }) => {
   const [sortedData, setSortedData] = useState({});
 
   const organizeTicketsByUser = (tickets, users, priority) => {
@@ -10,7 +10,6 @@ const TaskFetcher = ({ groupChoice }) => {
 
     tickets.forEach((ticket) => {
       const key = priority === "users" ? ticket.userId : ticket[priority];
-
       if (!organizedTickets[key]) {
         organizedTickets[key] = {
           title:
@@ -24,7 +23,27 @@ const TaskFetcher = ({ groupChoice }) => {
       organizedTickets[key].tickets.push(ticket);
     });
 
+    const ticketsArray = Object.entries(organizedTickets);
+
+    if (priority === "users") {
+      ticketsArray.sort((a, b) =>
+        a[1].title.localeCompare(b[1].title, undefined, { sensitivity: "base" })
+      );
+      const sortedOrganizedTickets = Object.fromEntries(ticketsArray);
+      return sortedOrganizedTickets;
+    }
+
     return organizedTickets;
+  };
+
+  const sortTickets = (tickets, sortChoice) => {
+    if (sortChoice === "title") {
+      return tickets.sort((a, b) => a.title.localeCompare(b.title));
+    } else if (sortChoice === "priority") {
+      return tickets.sort((a, b) => a.priority - b.priority);
+    }
+
+    return tickets;
   };
 
   const fetchUserData = async () => {
@@ -34,9 +53,21 @@ const TaskFetcher = ({ groupChoice }) => {
       );
       const data = await response.json();
 
-      setSortedData(
-        organizeTicketsByUser(data.tickets, data.users, groupChoice)
+      const organizedTickets = organizeTicketsByUser(
+        data.tickets,
+        data.users,
+        groupChoice
       );
+
+      // Sort the arrays inside organizedTickets
+      Object.keys(organizedTickets).forEach((key) => {
+        organizedTickets[key].tickets = sortTickets(
+          organizedTickets[key].tickets,
+          sortChoice
+        );
+      });
+
+      setSortedData(organizedTickets);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -44,7 +75,7 @@ const TaskFetcher = ({ groupChoice }) => {
 
   useEffect(() => {
     fetchUserData();
-  }, [groupChoice]);
+  }, [groupChoice, sortChoice]);
 
   return (
     <div className="group">
