@@ -2,6 +2,8 @@ import "./TaskFetcher.css";
 import React, { useEffect, useState } from "react";
 import CardGroup from "../CardGroup/CardGroup";
 
+const Priorities = ["No Priority", "Low", "Medium", "High", "Urgent"];
+
 const TaskFetcher = ({ groupChoice, sortChoice }) => {
   const [sortedData, setSortedData] = useState({});
 
@@ -15,6 +17,8 @@ const TaskFetcher = ({ groupChoice, sortChoice }) => {
           title:
             priority === "users"
               ? users.find((user) => user.id === key)?.name
+              : priority === "priority"
+              ? Priorities[key]
               : key,
         };
         organizedTickets[key].tickets = [];
@@ -80,7 +84,13 @@ const TaskFetcher = ({ groupChoice, sortChoice }) => {
   return (
     <div className="group">
       {Object.entries(sortedData).map(([key, { title, tickets }]) => (
-        <CardGroup key={key} userId={key} title={title} tickets={tickets} />
+        <CardGroup
+          key={key}
+          userId={key}
+          title={title}
+          tickets={tickets}
+          groupChoice={groupChoice}
+        />
       ))}
     </div>
   );

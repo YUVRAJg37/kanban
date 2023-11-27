@@ -1,0 +1,8 @@
+/* index.css or App.css */
+
+/* Import Poppins font */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");
+
+body {
+  margin: 0;
+}

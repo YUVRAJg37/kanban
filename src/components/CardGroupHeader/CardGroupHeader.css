@@ -2,15 +2,19 @@
   display: flex;
   align-items: center;
   padding: 5px;
-  background-color: #f0f0f0;
-  border-radius: 12px; /* Background color for the header */
+  border-radius: 12px;
+  font-family: "Poppins", sans-serif;
+  width: 230px; /* Set the desired fixed width */
+  min-width: 230px; /* Ensure a minimum width */
+  color: #fff; /* Set text color to white */
+  justify-content: space-between; /* Adjusted to provide space between logo and title, and between title and buttons */
 }
 
 .logo {
   font-size: 24px;
   font-weight: bold;
-  color: #333;
-  background-color: #fff; /* Background color for the logo */
+  color: #fff; /* Set text color to white */
+  background-color: #fff;
   border-radius: 50%;
   width: 40px;
   height: 40px;
@@ -21,22 +25,19 @@
 }
 
 .title {
-  font-weight: normal;
-  font-size: 16px;
-  color: #333;
   font-weight: bold;
-  margin-right: 80px; /* Adjusted margin to decrease width */
+  font-size: 16px;
+  color: #fff; /* Set text color to white */
+  margin-right: 10px; /* Adjusted margin for better spacing */
 }
 
 .add,
 .more {
   font-size: 24px;
-  color: #333;
+  color: #fff; /* Set text color to white */
   cursor: pointer;
-  margin-right: 10px;
 }
 
-/* Style for the more option, you can customize this */
 .more {
   font-size: 18px;
 }

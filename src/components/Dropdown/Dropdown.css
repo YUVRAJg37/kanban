@@ -1,0 +1,21 @@
+/* Container styling for the entire dropdown */
+.dropdown-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+/* Styling for the dropdown title */
+.dropdown-title {
+  margin-right: 10px; /* Adjust margin as needed to separate title and options */
+}
+
+/* Styling for the dropdown options */
+.dropdown-options select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc; /* Set your desired border color */
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 14px; /* Set your desired font size */
+}
